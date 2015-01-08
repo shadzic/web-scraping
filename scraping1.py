@@ -29,44 +29,11 @@ fete_jour = prevision_fete[0].split('/')[0].strip()
 
 print "Aujourd'hui " + date_jour.lower() + ", c'est la " + fete_jour + ". Il fera " + temperatures_b[0] + " degrés le matin, puis " + temperatures_b[1] + " degrés l'après-midi et " + temperatures_b[2] + " degrés en soirée."
 
-# Automatic email sending
-import smtplib
-import os
-import sys
-def sendTextMail(fromaddr_email, mto_email):
-	fromaddr = "fromaddr_email"
-        mto ="mto_email"
-	smtp = smtplib.SMTP()
-    	smtp.connect()
-    	"""smtp.sendmail(fromaddr,mto,"content")
-    	smtp.close()"""
-     
-sendTextMail()
-
-import smtplib, socket
-
-fromaddr = "fromaddr_email"
-toaddrs  = ["mto_email"]
-
-msg = "message automatique"
-
-try:
-    server = smtplib.SMTP('smtp.club-internet.fr')
-    result = server.sendmail(fromaddr, toaddrs, msg)
-    server.quit()
-    if result:
-        for r in result.keys():
-            print "Error sending to", r
-            rt = result[r]
-            print "Code", rt[0], ":", rt[1]
-except (smtplib.SMTPException, socket.error), arg:
-    print "SMTP Server could not send mail", arg
-    
-ctypes.windll.shell32.IsUserAnAdmin() 
-
 # Send a warning email in case of rain probability higher than 70%
 rain_risk = tree2.xpath('//span[@class="pourcent"]/text()')
-if rain_risk[0].split('%')[0] >= 70:
+#if rain_risk[0].split('%')[0] >= 70:
+#  sendTextMail()   
+    
     
 
 
